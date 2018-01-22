@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
+    GameManager gm;
 	// Use this for initialization
 	void Start () {
-		
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -14,13 +15,13 @@ public class Coin : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Player>().CurrentCoin++;
-            Debug.Log("Coin:" + collision.gameObject.GetComponent<Player>().CurrentCoin);
+            gm.CurrentCoin++;
+            gm.Count();
         }
     }
 }

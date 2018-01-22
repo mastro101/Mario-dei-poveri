@@ -22,9 +22,10 @@ public class Mushroom : PowerUp {
         switch (collision.gameObject.tag)
         {
             case "Player":
-                if (collision.gameObject.GetComponent<Player>().Life == 1)
+                player = collision.gameObject.GetComponent<Player>();
+                if (player.Life == 1)
                 {
-                    collision.gameObject.GetComponent<Player>().Life++;
+                    player.Life++;
                 }
                 Destroy(gameObject);
                 break;

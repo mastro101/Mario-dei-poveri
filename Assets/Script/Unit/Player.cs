@@ -6,9 +6,12 @@ public class Player : Unit {
     
     static int PlayerCount;
 
-    public int CurrentCoin;
+    public bool isFlower;
 
     Vector3 Checkpoint;
+
+    public GameObject hand;
+    
     
 
 	void Start () {
@@ -37,6 +40,9 @@ public class Player : Unit {
             // Render
         MyRender = GetComponent<MeshRenderer>();
 
+        // Aggiungi la mano
+        hand = gameObject.GetComponent<GameObject>();
+
         //Start point
         Checkpoint = MyTransform.position;
         
@@ -62,10 +68,11 @@ public class Player : Unit {
                 Jump();
             }
 
-            // Corsa
+            // Corsa/fuoco
             if (Input.GetKeyDown(KeyCode.RightShift))
             {
                 Speed += RunSpeed;
+                
             }
             if (Input.GetKeyUp(KeyCode.RightShift))
             {
@@ -100,6 +107,8 @@ public class Player : Unit {
                 Speed = Speed - RunSpeed;
             }
         }
+
+
 
         //Respawn
         if (IsAlive == false)

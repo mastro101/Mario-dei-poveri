@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour {
 
     public Transform MyTransform;
+    public Player player;
 
     public float Speed;
 
