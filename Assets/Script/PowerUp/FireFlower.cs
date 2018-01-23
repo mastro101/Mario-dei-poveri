@@ -23,6 +23,7 @@ public class FireFlower : PowerUp {
         {
             player = collision.gameObject.GetComponent<Player>();
             player.isFlower = true;
+            player.Life = 3;
             Destroy(gameObject);
         }
     }
